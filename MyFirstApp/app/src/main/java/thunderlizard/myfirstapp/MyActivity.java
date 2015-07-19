@@ -2,6 +2,7 @@ package thunderlizard.myfirstapp;
 
 import android.app.AlertDialog;
 import android.app.usage.UsageEvents;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
@@ -9,9 +10,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 
 public class MyActivity extends ActionBarActivity {
+    public final static String EXTRA_MESSAGE = "thunderlizard.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,11 @@ public class MyActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickButton(View view) {
-        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-
-        dlgAlert.setMessage(R.string.message_text);
-        dlgAlert.setTitle(R.string.message_title);
-        dlgAlert.setPositiveButton("OK", null);
-        dlgAlert.setCancelable(true);
-        dlgAlert.create().show();
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText)findViewById(R.id.peshko);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
