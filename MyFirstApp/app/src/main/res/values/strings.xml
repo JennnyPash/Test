@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="message_title">This is the title of my message box</string>
+    <string name="message_text">This is the text of my message box</string>
+    <string name="show_message_button_title">Click me to see the message</string>
+</resources>
