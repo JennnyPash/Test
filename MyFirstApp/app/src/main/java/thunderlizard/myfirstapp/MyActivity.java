@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.Locale;
 
@@ -32,6 +33,21 @@ public class MyActivity extends ActionBarActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_activity_actions, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putString(MyActivity.EXTRA_MESSAGE, ((TextView)findViewById(R.id.peshko)).getText().toString());
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        String enteredString = savedInstanceState.getString(MyActivity.EXTRA_MESSAGE);
+        ((TextView)findViewById(R.id.peshko)).setText(enteredString);
     }
 
     @Override
@@ -61,6 +77,7 @@ public class MyActivity extends ActionBarActivity {
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText)findViewById(R.id.peshko);
+        editText.getText();
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
