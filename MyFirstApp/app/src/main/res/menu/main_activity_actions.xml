@@ -5,6 +5,14 @@
         android:title="@string/action_search"
         android:icon="@drawable/search_icon"
         myfirstapp:showAsAction="ifRoom" />
+    <item android:title="English"
+          android:id="@+id/action_english"
+          android:icon="@drawable/uk_flag"
+        myfirstapp:showAsAction="always"/>
+    <item android:title="Bulgarian"
+        android:id="@+id/action_bulgarian"
+        android:icon="@drawable/bg_flag"
+        myfirstapp:showAsAction="always"/>
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         myfirstapp:showAsAction="never" />

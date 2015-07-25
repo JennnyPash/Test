@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Моето първо приложение</string>
+    <string name="edit_message">Въведете съобщение</string>
+    <string name="button_send">Изпрати</string>
+    <string name="action_settings">Настройки</string>
+    <string name="title_activity_main">Основен екран</string>
+    <string name="title_activity_display_message">Моето съобщение</string>
+    <string name="hello_world">Здравей</string>
+    <string name="action_search">Търсене</string>
+</resources>

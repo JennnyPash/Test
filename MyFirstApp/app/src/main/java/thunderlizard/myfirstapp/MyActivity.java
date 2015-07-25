@@ -1,6 +1,8 @@
 package thunderlizard.myfirstapp;
 
+import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,9 +10,15 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import java.util.Locale;
+
 
 public class MyActivity extends ActionBarActivity {
     public final static String EXTRA_MESSAGE = "thunderlizard.myfirstapp.MESSAGE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,12 @@ public class MyActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         // Handle presses on the action bar items
         switch (item.getItemId()) {
+            case R.id.action_bulgarian:
+                ChangeLocale("bg");
+                return true;
+            case R.id.action_english:
+                ChangeLocale("en");
+                return true;
             case R.id.action_search:
                 //openSearch();
                 return true;
@@ -49,6 +63,20 @@ public class MyActivity extends ActionBarActivity {
         EditText editText = (EditText)findViewById(R.id.peshko);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    private void ChangeLocale(String language){
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        Intent intent = getIntent();
+        finish();
         startActivity(intent);
     }
 }
