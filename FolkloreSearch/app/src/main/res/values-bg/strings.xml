@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Фолклорни области</string>
     <string name="action_settings">Настройки</string>
+    <string name="folklore_regions">Folklore regions</string>
+    <string name="search">Търси</string>
+    <string name="search_elipses">Търси...</string>
 </resources>
