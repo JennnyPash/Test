@@ -1,6 +1,7 @@
 package jenny.folkloresearch;
 
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +12,23 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        //actionBar.setDisplayShowTitleEnabled(false);
+
+        ActionBar.Tab searchTab = actionBar.newTab()
+                                     .setText(R.string.search)
+                                     .setTabListener(new TabListener<ExampleSearchFragment>(
+                                             this, "search", ExampleSearchFragment.class));
+
+        ActionBar.Tab regionsTab = actionBar.newTab()
+                                      .setText(R.string.folklore_regions)
+                                      .setTabListener(new TabListener<ExampleRegionsFragment>(this, "regions", ExampleRegionsFragment.class));
+        actionBar.addTab(searchTab);
+        actionBar.addTab(regionsTab);
+        //actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
