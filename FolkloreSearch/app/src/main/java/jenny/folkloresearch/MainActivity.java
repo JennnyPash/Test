@@ -1,10 +1,15 @@
 package jenny.folkloresearch;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +17,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLocale();
+
         //setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getSupportActionBar();
@@ -47,9 +54,32 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setLocale() {
+        Configuration config = getBaseContext().getResources().getConfiguration();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFS_NAME, 1);
+        String savedLang = sharedPreferences.getString(Constants.LANG_PREF, config.locale.getLanguage());
+
+        if (!savedLang.equals(config.locale.getLanguage())) {
+            changeLocale(savedLang);
+        }
+    }
+
+    private void changeLocale(String language){
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
     }
 }
