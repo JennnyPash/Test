@@ -27,8 +27,7 @@ public class MainActivity extends ActionBarActivity {
 
         ActionBar.Tab searchTab = actionBar.newTab()
                                      .setText(R.string.search)
-                                     .setTabListener(new TabListener<ExampleSearchFragment>(
-                                             this, "search", ExampleSearchFragment.class));
+                                     .setTabListener(new TabListener<ExampleSearchFragment>(this, "search", ExampleSearchFragment.class));
 
         ActionBar.Tab regionsTab = actionBar.newTab()
                                       .setText(R.string.folklore_regions)

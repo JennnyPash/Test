@@ -61,27 +61,33 @@ public class SettingsActivity extends ActionBarActivity {
         Spinner languageSpinner = (Spinner)findViewById(R.id.language_spinner);
         Language language = (Language)languageSpinner.getSelectedItem();
 
-        if (saveLocale(language.code)) {
-            final TextSwitcher textSwitcher = (TextSwitcher) findViewById(R.id.text_switcher);
+        Boolean settingsSaved = saveLocale(language.code);
 
-            Animation fade_in = AnimationUtils.loadAnimation(this,
-                    android.R.anim.fade_in);
-            Animation fade_out = AnimationUtils.loadAnimation(this,
-                    android.R.anim.fade_out);
-
-            textSwitcher.setInAnimation(fade_in);
-            textSwitcher.setOutAnimation(fade_out);
-
-            textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-                @Override
-                public View makeView() {
-                    TextView textView = new TextView(SettingsActivity.this);
-                    textView.setGravity(Gravity.CENTER_HORIZONTAL);
-                    return textView;
-                }
-            });
-            textSwitcher.setText(getResources().getString(R.string.changes_will_take_effect_after_restart));
+        if (settingsSaved) {
+            showSettingsWillTakeEffectAfterRestart();
         }
+    }
+
+    private void showSettingsWillTakeEffectAfterRestart() {
+        final TextSwitcher textSwitcher = (TextSwitcher) findViewById(R.id.text_switcher);
+
+        Animation fade_in = AnimationUtils.loadAnimation(this,
+                android.R.anim.fade_in);
+        Animation fade_out = AnimationUtils.loadAnimation(this,
+                android.R.anim.fade_out);
+
+        textSwitcher.setInAnimation(fade_in);
+        textSwitcher.setOutAnimation(fade_out);
+
+        textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView textView = new TextView(SettingsActivity.this);
+                textView.setGravity(Gravity.CENTER_HORIZONTAL);
+                return textView;
+            }
+        });
+        textSwitcher.setText(getResources().getString(R.string.changes_will_take_effect_after_restart));
     }
 
     private void initLanguageSpinner() {
