@@ -1,5 +1,6 @@
 package jenny.folkloresearch;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,6 +10,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +35,8 @@ public class MainActivity extends ActionBarActivity implements IACRCloudListener
     private boolean initState = false;
 
     private String path = "";
+
+    private ObjectAnimator animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +69,14 @@ public class MainActivity extends ActionBarActivity implements IACRCloudListener
 
 
     public void onSearchButtonClick(View arg0) {
+        ImageButton ib = (ImageButton)findViewById(R.id.search_button);
+
+        this.animation = ObjectAnimator.ofFloat(ib, "rotationY", 0.0f, 360f);
+        this.animation.setDuration(3600);
+        this.animation.setRepeatCount(ObjectAnimator.INFINITE);
+        this.animation.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.animation.start();
+
         start();
     }
 
@@ -121,10 +137,11 @@ public class MainActivity extends ActionBarActivity implements IACRCloudListener
 
     @Override
     public void onResult(String result) {
+        this.animation.end();
         //String oldRes = (String) mResult.getText();
         //mResult.setText(oldRes + "\n" + result);
-        ((TextView)findViewById(R.id.result_text)).setText(result);
-        mProcessing = false;
+        //((TextView)findViewById(R.id.result_text)).setText(result);
+        //mProcessing = false;
 
         if (this.mClient != null) {
             this.mClient.stop();

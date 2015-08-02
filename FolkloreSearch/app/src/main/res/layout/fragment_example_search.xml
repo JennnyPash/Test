@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/linear_interpolator"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <Button
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_3">
+    <ImageButton
         android:id="@+id/search_button"
-        android:layout_width="960px"
-        android:layout_height="720px"
+        android:layout_width="252px"
+        android:layout_height="400px"
         android:layout_centerInParent="true"
-        android:background="@drawable/bulgaria_flag"
-        android:text="@string/search_elipses"
+        android:background="@drawable/bulgaria_fingerprint"
         android:onClick="onSearchButtonClick" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/search_button"
+        android:textSize="18pt"
+        android:text="@string/search_elipses"/>
 </RelativeLayout>
