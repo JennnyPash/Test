@@ -1,7 +1,7 @@
 package jenny.folkloresearch;
 
 /**
- * Created by kamen on 31.7.2015 ã..
+ * Created by kamen on 31.7.2015 ..
  */
 public class Constants {
     public static final String PREFS_NAME = "FolkloreSearch_PrefsFile";
