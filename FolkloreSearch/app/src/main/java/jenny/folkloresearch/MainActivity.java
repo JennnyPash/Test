@@ -67,17 +67,14 @@ public class MainActivity extends ActionBarActivity implements IACRCloudListener
         actionBar.addTab(regionsTab);
     }
 
+    public void onStartSearchButtonClick() {
 
-    public void onSearchButtonClick(View arg0) {
-        ImageButton ib = (ImageButton)findViewById(R.id.search_button);
+    }
 
-        this.animation = ObjectAnimator.ofFloat(ib, "rotationY", 0.0f, 360f);
-        this.animation.setDuration(3600);
-        this.animation.setRepeatCount(ObjectAnimator.INFINITE);
-        this.animation.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.animation.start();
-
-        start();
+    public void onSearchButtonClick(View view) {
+        Intent searchIntent = new Intent(this, SearchActivity.class);
+        startActivity(searchIntent);
+        //start();
     }
 
     public void start() {

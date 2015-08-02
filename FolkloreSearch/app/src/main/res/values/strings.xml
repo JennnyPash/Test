@@ -4,7 +4,7 @@
     <string name="folklore_regions">Folklore regions</string>
     <string name="save">Save</string>
     <string name="search">Search</string>
-    <string name="search_elipses">Search...</string>
+    <string name="searching">Searching...</string>
     <string name="changes_will_take_effect_after_restart">Changes will take effect, after the application is restarted.</string>
 
     <string name="bg">Bulgarian</string>

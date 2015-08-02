@@ -3,19 +3,12 @@
     android:interpolator="@android:anim/linear_interpolator"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_3">
+    android:background="@drawable/background_main">
     <ImageButton
         android:id="@+id/search_button"
-        android:layout_width="252px"
-        android:layout_height="400px"
+        android:layout_width="152dp"
+        android:layout_height="240dp"
         android:layout_centerInParent="true"
         android:background="@drawable/bulgaria_fingerprint"
         android:onClick="onSearchButtonClick" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/search_button"
-        android:textSize="18pt"
-        android:text="@string/search_elipses"/>
 </RelativeLayout>

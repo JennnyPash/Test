@@ -4,7 +4,7 @@
     <string name="folklore_regions">Фолклорни области</string>
     <string name="save">Запиши</string>
     <string name="search">Търси</string>
-    <string name="search_elipses">Търси...</string>
+    <string name="searching">Търсене...</string>
     <string name="changes_will_take_effect_after_restart">Промените ще влязат в сила, след като приложението бъде рестартиранo.</string>
 
     <string name="bg">Български</string>
