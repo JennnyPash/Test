@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by kamen on 26.7.2015 ã..
+ * Created by kamen on 26.7.2015 ..
  */
 public class ExampleSearchFragment extends Fragment {
     @Override
