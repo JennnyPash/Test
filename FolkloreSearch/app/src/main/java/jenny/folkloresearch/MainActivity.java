@@ -25,33 +25,11 @@ import com.acrcloud.rec.sdk.IACRCloudListener;
 import java.util.Locale;
 
 
-public class MainActivity extends ActionBarActivity implements IACRCloudListener {
-    private ACRCloudClient mClient;
-    private ACRCloudConfig mConfig;
-
-    private TextView mVolume, mResult, tv_time;
-
-    private boolean mProcessing = false;
-    private boolean initState = false;
-
-    private String path = "";
-
-    private ObjectAnimator animation;
-
+public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLocale();
-
-        //setContentView(R.layout.activity_main);
-
-        //findViewById(R.id.search_button_main).setOnClickListener(new View.OnClickListener() {
-
-        //    @Override
-        //    public void onClick(View arg0) {
-        //        start();
-        //    }
-        //});
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -67,45 +45,9 @@ public class MainActivity extends ActionBarActivity implements IACRCloudListener
         actionBar.addTab(regionsTab);
     }
 
-    public void onStartSearchButtonClick() {
-
-    }
-
     public void onSearchButtonClick(View view) {
         Intent searchIntent = new Intent(this, SearchActivity.class);
         startActivity(searchIntent);
-        //start();
-    }
-
-    public void start() {
-        if(!this.initState) {
-            this.mConfig = new ACRCloudConfig();
-            //ЕдЦГјаМэ¶ФПу
-            this.mConfig.acrcloudListener = this;
-            this.mConfig.context = this;
-            this.mConfig.host = "ap-southeast-1.api.acrcloud.com";
-            this.mConfig.accessKey = "14945730a11c4c93e32141b9bec03a7e";
-            this.mConfig.accessSecret = "98bAhbn6SY3PdnapvhMmjjHA88WrmOeeKR8DMWDl";
-            this.mConfig.requestTimeout = 5000;
-
-            this.mClient = new ACRCloudClient();
-            this.mConfig.reqMode = ACRCloudConfig.ACRCloudRecMode.REC_MODE_REMOTE;
-            this.initState = this.mClient.initWithConfig(this.mConfig);
-            if (!this.initState) {
-                Toast.makeText(this, "init error", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-
-        boolean x = this.mClient.startRecognize();
-
-//        if (!mProcessing) {
-//            mProcessing = true;
-//            if (!this.mClient.startRecognize()) {
-//                mProcessing = false;
-//                mResult.setText("start error!");
-//            }
-//        }
     }
 
     @Override
@@ -130,25 +72,6 @@ public class MainActivity extends ActionBarActivity implements IACRCloudListener
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onResult(String result) {
-        this.animation.end();
-        //String oldRes = (String) mResult.getText();
-        //mResult.setText(oldRes + "\n" + result);
-        //((TextView)findViewById(R.id.result_text)).setText(result);
-        //mProcessing = false;
-
-        if (this.mClient != null) {
-            this.mClient.stop();
-            mProcessing = false;
-        }
-    }
-
-    @Override
-    public void onVolumeChanged(double volume) {
-        //mVolume.setText("volume: " + volume);
     }
 
     private void setLocale() {
