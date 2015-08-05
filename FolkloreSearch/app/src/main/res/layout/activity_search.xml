@@ -8,7 +8,8 @@
         android:id="@+id/search_image"
         android:layout_width="440dp"
         android:layout_height="280dp"
-        android:src="@drawable/bulgaria_search_button"/>
+        android:src="@drawable/bulgaria_search_button"
+        android:onClick="onSearchClick"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

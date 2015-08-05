@@ -3,6 +3,7 @@ package jenny.folkloresearch;
 import android.animation.ObjectAnimator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -27,11 +28,6 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
         setContentView(R.layout.activity_search);
         this.initAnimation();
         this.startSearch();
-    }
-
-    private void startSearch() {
-        this.animation.start();
-        this.startRecognition();
     }
 
     @Override
@@ -67,7 +63,11 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
         //empty not needed but requred to be implemented by IACRCloudListener
     }
 
-    public void startRecognition() {
+    public void onSearchClick(View view) {
+        startSearch();
+    }
+
+    private void startRecognition() {
         if(!this.initState) {
             this.mConfig = new ACRCloudConfig();
             //≈‰÷√º‡Ã˝∂‘œÛ
@@ -92,6 +92,13 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
             if (!this.mClient.startRecognize()) {
                 mProcessing = false;
             }
+        }
+    }
+
+    private void startSearch() {
+        if (!mProcessing) {
+            this.animation.start();
+            this.startRecognition();
         }
     }
 
