@@ -9,4 +9,5 @@
 
     <string name="bg">Български</string>
     <string name="en">Английски</string>
+    <string name="no_result">Съжаляваме, но приложението не може да разпознае песента! Моля, опитайте отново.</string>
 </resources>

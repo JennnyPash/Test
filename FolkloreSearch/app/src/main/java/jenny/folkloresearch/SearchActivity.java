@@ -49,13 +49,13 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
             JSONObject statusObj = obj.getJSONObject("status");
 
             switch (statusObj.getInt("code")) {
+                case 1000:
                 case 1001:
+                    Toast.makeText(this,getResources().getString(R.string.no_result),Toast.LENGTH_LONG).show();
                     break;
                 default:
                     //navigate to new activity and show result there
             }
-            
-            Toast.makeText(this, statusObj.getString("msg"), Toast.LENGTH_LONG).show();
         } catch (Throwable t) {
             Toast.makeText(this, "Error parsing result", Toast.LENGTH_LONG);
             return;
