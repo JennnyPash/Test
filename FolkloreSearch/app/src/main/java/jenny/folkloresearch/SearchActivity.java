@@ -1,6 +1,7 @@
 package jenny.folkloresearch;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -50,7 +51,12 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
                     Toast.makeText(this,getResources().getString(R.string.no_result),Toast.LENGTH_LONG).show();
                     break;
                 default:
-                    //navigate to new activity and show result there
+                    //navigate to new activity and show result there:
+                    //obj.getJSONObject("metadata").getJSONArray("custom_files").get(0)
+                    Intent successIntent = new Intent(this, ResultActivity.class);
+                    successIntent.putExtra(Constants.SEARCH_RES, statusObj.toString());
+                    startActivity(successIntent);
+                    break;
             }
         } catch (Throwable t) {
             Toast.makeText(this, "Error parsing result", Toast.LENGTH_LONG);

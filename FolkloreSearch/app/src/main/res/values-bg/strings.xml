@@ -10,4 +10,6 @@
     <string name="bg">Български</string>
     <string name="en">Английски</string>
     <string name="no_result">Съжаляваме, но приложението не може да разпознае песента! Моля, опитайте отново.</string>
+
+    <string name="title_activity_result">Успешено търсене!</string>
 </resources>
