@@ -11,5 +11,11 @@
     <string name="en">Английски</string>
     <string name="no_result">Съжаляваме, но приложението не може да разпознае песента! Моля, опитайте отново.</string>
 
-    <string name="title_activity_result">Успешено търсене!</string>
+    <string name="title_activity_result">Успешно търсене!</string>
+
+    <string name="song_label">Име: </string>
+    <string name="artist_label">Изпълнител: </string>
+    <string name="text_region">Регионът на песента е:  </string>
+
+
 </resources>

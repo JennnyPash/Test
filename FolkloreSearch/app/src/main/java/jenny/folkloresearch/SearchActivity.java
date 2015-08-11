@@ -13,6 +13,7 @@ import com.acrcloud.rec.sdk.ACRCloudClient;
 import com.acrcloud.rec.sdk.ACRCloudConfig;
 import com.acrcloud.rec.sdk.IACRCloudListener;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class SearchActivity extends ActionBarActivity implements IACRCloudListener {
@@ -46,16 +47,15 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
             JSONObject statusObj = obj.getJSONObject("status");
 
             switch (statusObj.getInt("code")) {
-                case 1000:
-                case 1001:
-                    Toast.makeText(this,getResources().getString(R.string.no_result),Toast.LENGTH_LONG).show();
+                case 0:
+                    //navigate to new activity and show result there:
+                    JSONArray jsonArray = obj.getJSONObject("metadata").getJSONArray("custom_files");
+                    Intent successIntent = new Intent(this, ResultActivity.class);
+                    successIntent.putExtra(Constants.SEARCH_RES, jsonArray.toString());
+                    startActivity(successIntent);
                     break;
                 default:
-                    //navigate to new activity and show result there:
-                    //obj.getJSONObject("metadata").getJSONArray("custom_files").get(0)
-                    Intent successIntent = new Intent(this, ResultActivity.class);
-                    successIntent.putExtra(Constants.SEARCH_RES, statusObj.toString());
-                    startActivity(successIntent);
+                    Toast.makeText(this,getResources().getString(R.string.no_result),Toast.LENGTH_LONG).show();
                     break;
             }
         } catch (Throwable t) {
@@ -76,7 +76,7 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
     private void startRecognition() {
         if(!this.initState) {
             this.mConfig = new ACRCloudConfig();
-            //ÅäÖÃ¼àÌý¶ÔÏó
+            //ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             this.mConfig.acrcloudListener = this;
             this.mConfig.context = this;
             this.mConfig.host = "ap-southeast-1.api.acrcloud.com";
