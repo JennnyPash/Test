@@ -18,4 +18,10 @@
     <string name="text_region">The song\'s region is:  </string>
 
     <string name="title_activity_region">Region information</string>
+    <string name="location">Location: </string>
+    <string name="music">Folklore music: </string>
+    <string name="dances">Dances: </string>
+    <string name="clothes">Clothes folklore:  </string>
+    <string name="crafts">Crafts: </string>
+    <string name="habits">Habits: </string>
 </resources>

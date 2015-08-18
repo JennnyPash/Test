@@ -84,4 +84,15 @@ public class Region extends DataItem implements Serializable {
     public void setMusic(String music) {
         this.music = music;
     }
+
+    @ServerProperty("Region")
+    private String region;
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
 }
