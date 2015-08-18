@@ -1,6 +1,5 @@
 package jenny.folkloresearch;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -10,20 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.acrcloud.rec.sdk.ACRCloudClient;
-import com.acrcloud.rec.sdk.ACRCloudConfig;
-import com.acrcloud.rec.sdk.IACRCloudListener;
 
 import java.util.Locale;
-
 
 public class MainActivity extends ActionBarActivity {
     @Override

@@ -16,4 +16,6 @@
     <string name="song_label">Name: </string>
     <string name="artist_label">Artist: </string>
     <string name="text_region">The song\'s region is:  </string>
+
+    <string name="title_activity_region">Region information</string>
 </resources>

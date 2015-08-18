@@ -1,17 +1,10 @@
 package jenny.folkloresearch;
 
-/**
- * Created by kamen on 26.7.2015 ..
- */
-
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 
-/**
- * Created by kamen on 26.7.2015 ..
- */
 public class TabListener<T extends Fragment> implements ActionBar.TabListener {
     private Fragment mFragment;
     private final Activity mActivity;

@@ -1,10 +1,6 @@
 package jenny.folkloresearch;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -21,9 +17,6 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 public class SettingsActivity extends ActionBarActivity {
 

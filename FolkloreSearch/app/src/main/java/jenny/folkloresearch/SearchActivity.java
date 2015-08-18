@@ -76,7 +76,7 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
     private void startRecognition() {
         if(!this.initState) {
             this.mConfig = new ACRCloudConfig();
-            //���ü�������
+
             this.mConfig.acrcloudListener = this;
             this.mConfig.context = this;
             this.mConfig.host = "ap-southeast-1.api.acrcloud.com";
