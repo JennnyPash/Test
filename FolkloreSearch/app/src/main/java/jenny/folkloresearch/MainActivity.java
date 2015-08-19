@@ -61,6 +61,13 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onRegionClick(View view) {
+        String regionName = view.getTag().toString();
+
+        ActivityIntent activityIntent = new ActivityIntent(regionName, this);
+        activityIntent.StartActivity();
+    }
+
     private void setLocale() {
         Configuration config = getBaseContext().getResources().getConfiguration();
 

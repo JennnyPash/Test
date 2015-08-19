@@ -2,8 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bulgaria" />
+        android:layout_marginBottom="30dp"
+        android:text="some text here...." />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bulgariq"
+        android:stretchColumns="0,1">
+        <TableRow android:layout_weight="1">
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="severnqshka"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="50dp"
+                android:onClick="onRegionClick"
+                />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="severnqshka"
+                android:layout_marginTop="50dp"
+                android:onClick="onRegionClick"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="dobrudjanska"
+                android:onClick="onRegionClick"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="shopska"
+                android:layout_marginLeft="30dp"
+                android:onClick="onRegionClick"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="trakiiska"
+                android:layout_marginLeft="10dp"
+                android:onClick="onRegionClick"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="strandjanska"
+                android:layout_marginLeft="20dp"
+                android:onClick="onRegionClick"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="pirinska"
+                android:layout_marginLeft="40dp"
+                android:onClick="onRegionClick"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0"
+                android:tag="rodopska"
+                android:onClick="onRegionClick"/>
+        </TableRow>
+    </TableLayout>
+
 </LinearLayout>
