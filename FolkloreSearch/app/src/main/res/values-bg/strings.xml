@@ -18,6 +18,7 @@
     <string name="text_region">Регионът на песента е:  </string>
 
     <string name="title_activity_region">Информация за регион</string>
+    <string name="title_folklore_region">За повече информация, изберете регион.</string>
     <string name="location">Местоположение: </string>
     <string name="music">Народна музика и инструменти: </string>
     <string name="dances">Народни танци: </string>

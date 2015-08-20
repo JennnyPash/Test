@@ -18,6 +18,7 @@
     <string name="text_region">The song\'s region is:  </string>
 
     <string name="title_activity_region">Region information</string>
+    <string name="title_folklore_region">For more information select a region.</string>
     <string name="location">Location: </string>
     <string name="music">Folklore music: </string>
     <string name="dances">Dances: </string>
