@@ -33,6 +33,12 @@ public class SearchActivity extends ActionBarActivity implements IACRCloudListen
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        this.mClient.stop();
+    }
+
+    @Override
     public void onResult(String result) {
         this.animation.end();
         this.mProcessing = false;
