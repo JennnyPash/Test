@@ -1,43 +1,51 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="jenny.folkloresearch.ResultActivity">
-    <TextView android:id="@+id/song_label"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/song_label"
-        android:textStyle="bold"/>
-    <TextView android:id="@+id/song_name"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+        <TextView android:id="@+id/song_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/song_label"
+            android:textStyle="bold"/>
+        <TextView android:id="@+id/song_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/song_label"/>
-    <TextView android:id="@+id/artist_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/song_label"
-        android:text="@string/artist_label"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
-    <TextView android:id="@+id/song_artist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/song_name"
-        android:layout_toRightOf="@+id/artist_label"
-        android:layout_marginTop="10dp"/>
+        android:orientation="horizontal">
+        <TextView android:id="@+id/artist_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/song_label"
+            android:text="@string/artist_label"
+            android:textStyle="bold"/>
+        <TextView android:id="@+id/song_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <TextView android:id="@+id/text_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/artist_label"
         android:text="@string/text_region"
         android:textStyle="bold"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"/>
     <ImageView android:id="@+id/song_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_region"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-60dp"
         android:onClick="openRegion"/>
-</RelativeLayout>
+</LinearLayout>
