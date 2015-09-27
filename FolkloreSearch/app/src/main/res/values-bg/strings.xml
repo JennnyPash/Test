@@ -14,7 +14,7 @@
     <string name="title_activity_result">Успешно търсене!</string>
 
     <string name="song_label">Име: </string>
-    <string name="artist_label">Изпълнител: </string>
+    <string name="artist_label">Танц: </string>
     <string name="text_region">Регионът на песента е:  </string>
 
     <string name="title_activity_region">Информация за регион</string>
