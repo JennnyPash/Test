@@ -1,2 +1,2 @@
 # Test
-My first test
+This repository is used to store my bachelor and master degrees
