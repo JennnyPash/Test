@@ -14,4 +14,7 @@ public class Room extends Entity {
 
     @ForeignCollectionField(eager = true)
     private ForeignCollection<Subject> subjects;
+
+    @DatabaseField
+    private double budget;
 }
