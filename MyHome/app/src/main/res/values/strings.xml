@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">My Home</string>
+    <string name="app_name">Моят дом</string>
+    <string name="bath_room">Баня</string>
+    <string name="kitchen">Кухня</string>
+    <string name="living_room">Всекидневна</string>
+    <string name="dining_room">Трапезария</string>
+    <string name="bed_room">Спалня</string>
+    <string name="cabinet">Кабинет</string>
+
+    <string name="bed">Легло</string>
 </resources>

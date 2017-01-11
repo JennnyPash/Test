@@ -10,7 +10,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 /**
- * Created by kivanov on 1/11/2017.
+ * Created by JennyPash on 1/11/2017.
  */
 
 public class Database extends OrmLiteSqliteOpenHelper {

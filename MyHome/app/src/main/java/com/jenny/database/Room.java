@@ -3,9 +3,10 @@ package com.jenny.database;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
+import com.jenny.myhome.RoomType;
 
 /**
- * Created by kivanov on 1/11/2017.
+ * Created by JennyPash on 1/11/2017.
  */
 
 public class Room extends Entity {
@@ -17,4 +18,7 @@ public class Room extends Entity {
 
     @DatabaseField
     private double budget;
+
+    @DatabaseField
+    private RoomType roomType;
 }

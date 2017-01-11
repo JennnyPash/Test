@@ -3,7 +3,7 @@ package com.jenny.database;
 import com.j256.ormlite.field.DatabaseField;
 
 /**
- * Created by kivanov on 1/11/2017.
+ * Created by JennyPash on 1/11/2017.
  */
 
 public class Entity {

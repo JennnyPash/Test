@@ -1,9 +1,10 @@
 package com.jenny.database;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.jenny.myhome.SubjectType;
 
 /**
- * Created by kivanov on 1/11/2017.
+ * Created by JennyPash on 1/11/2017.
  */
 
 public class Subject extends Entity {
@@ -21,4 +22,7 @@ public class Subject extends Entity {
 
     @DatabaseField
     private double price;
+
+    @DatabaseField
+    private SubjectType subjectType;
 }

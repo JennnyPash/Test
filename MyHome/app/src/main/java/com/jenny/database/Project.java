@@ -4,8 +4,10 @@ import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 
+import java.util.Date;
+
 /**
- * Created by kivanov on 1/11/2017.
+ * Created by JennyPash on 1/11/2017.
  */
 
 public class Project extends Entity {
@@ -14,4 +16,7 @@ public class Project extends Entity {
 
     @ForeignCollectionField(eager = true)
     private ForeignCollection<Room> rooms;
+
+    @DatabaseField
+    private Date dateCreated;
 }
