@@ -8,4 +8,7 @@
     <string name="cabinet">Кабинет</string>
 
     <string name="bed">Легло</string>
+
+    <string name="projects">Проекти</string>
+    <string name="new_project">Нов проект</string>
 </resources>
