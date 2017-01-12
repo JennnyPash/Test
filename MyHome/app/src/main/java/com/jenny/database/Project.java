@@ -20,6 +20,10 @@ public class Project extends Entity {
     @DatabaseField
     private Date dateCreated;
 
+    public Project() {
+        this.name = "New project";
+    }
+
     public String getName() {
         return name;
     }
