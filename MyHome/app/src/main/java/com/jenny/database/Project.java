@@ -19,4 +19,33 @@ public class Project extends Entity {
 
     @DatabaseField
     private Date dateCreated;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ForeignCollection<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(ForeignCollection<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

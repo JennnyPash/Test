@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.jenny.binding.ProjectsList;
+import com.jenny.database.Project;
 import com.jenny.myhome.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +18,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        this.binding.setProjectsList(new ProjectsList(null));
+
+        if (MyHomeApplication.getDatabase().getAllProjects().size() == 0) {
+            MyHomeApplication.getDatabase().create(new Project());
+        } else {
+            Project p = MyHomeApplication.getDatabase().getProject(1);
+            p.setName("My first project");
+            MyHomeApplication.getDatabase().update(p);
+        }
+
+        this.binding.setProjectsList(new ProjectsList(MyHomeApplication.getDatabase().getAllProjects()));
 
         Button newProjectButton = (Button)findViewById(R.id.button_new_project);
         newProjectButton.setOnClickListener(new View.OnClickListener() {
