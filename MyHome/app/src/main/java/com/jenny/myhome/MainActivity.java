@@ -11,6 +11,8 @@ import com.jenny.binding.ProjectsList;
 import com.jenny.database.Project;
 import com.jenny.myhome.databinding.ActivityMainBinding;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
@@ -32,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (MyHomeApplication.getDatabase().getAllProjects().size() == 0) {
+
+        List<Project> projects = MyHomeApplication.getDatabase().getAllProjects();
+
+        if (projects.size() == 0) {
             MyHomeApplication.getDatabase().create(new Project());
+            projects = MyHomeApplication.getDatabase().getAllProjects();
         }
 
-        this.binding.setProjectsList(new ProjectsList(MyHomeApplication.getDatabase().getAllProjects()));
+        this.binding.setProjectsList(new ProjectsList(projects));
     }
 }

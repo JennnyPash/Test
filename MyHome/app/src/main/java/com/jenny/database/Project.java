@@ -6,6 +6,8 @@ import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.jenny.myhome.BR;
+import com.jenny.myhome.MyHomeApplication;
+import com.jenny.myhome.R;
 
 import java.util.Date;
 
@@ -59,6 +61,6 @@ public class Project extends Entity {
 
     @Override
     public String toString() {
-        return this.name;
+        return String.format("%s - %d %s", this.name, this.rooms.size(), MyHomeApplication.getContext().getString(R.string.rooms));
     }
 }

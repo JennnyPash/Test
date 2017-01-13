@@ -10,6 +10,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.jenny.database.Project;
+import com.jenny.myhome.Constants;
 import com.jenny.myhome.HomeActivity;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class ProjectsList {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Project project = (Project)parent.getItemAtPosition(position);
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
-                intent.putExtra("projectId", project.getId());
+                intent.putExtra(Constants.PROJECT_ID, project.getId());
                 view.getContext().startActivity(intent);
             }
         });

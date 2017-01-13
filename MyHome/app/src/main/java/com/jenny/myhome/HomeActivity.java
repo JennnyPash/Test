@@ -1,7 +1,7 @@
 package com.jenny.myhome;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
-        int projectId = this.getIntent().getIntExtra("projectId", 0);
+        int projectId = this.getIntent().getIntExtra(Constants.PROJECT_ID , 0);
         if (projectId > 0) {
             this.binding.setProject(MyHomeApplication.getDatabase().getProject(projectId));
         } else {
@@ -28,6 +28,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onRoomClick(View view) {
         RoomType roomType = (RoomType)view.getTag();
+        Intent intent = new Intent(this, RoomActivity.class);
+        intent.putExtra(Constants.PROJECT_ID, this.binding.getProject().getId());
+        intent.putExtra(Constants.ROOM_TYPE, roomType);
+        startActivity(intent);
     }
 
     public void onProjectNameClick(View view) {
