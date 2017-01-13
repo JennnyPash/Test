@@ -15,7 +15,7 @@ import com.jenny.myhome.HomeActivity;
 import java.util.List;
 
 /**
- * Created by kivanov on 1/11/2017.
+ * Created by JennyPash on 1/11/2017.
  */
 
 public class ProjectsList {

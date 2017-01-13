@@ -1,8 +1,11 @@
 package com.jenny.database;
 
+import android.databinding.Bindable;
+
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
+import com.jenny.myhome.BR;
 
 import java.util.Date;
 
@@ -24,28 +27,34 @@ public class Project extends Entity {
         this.name = "New project";
     }
 
+    @Bindable
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.name);
     }
 
+    @Bindable
     public ForeignCollection<Room> getRooms() {
         return rooms;
     }
 
     public void setRooms(ForeignCollection<Room> rooms) {
         this.rooms = rooms;
+        notifyPropertyChanged(BR.rooms);
     }
 
+    @Bindable
     public Date getDateCreated() {
         return dateCreated;
     }
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
+        notifyPropertyChanged(BR.dateCreated);
     }
 
     @Override

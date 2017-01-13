@@ -19,16 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        if (MyHomeApplication.getDatabase().getAllProjects().size() == 0) {
-            MyHomeApplication.getDatabase().create(new Project());
-        } else {
-            Project p = MyHomeApplication.getDatabase().getProject(1);
-            p.setName("My first project");
-            MyHomeApplication.getDatabase().update(p);
-        }
-
-        this.binding.setProjectsList(new ProjectsList(MyHomeApplication.getDatabase().getAllProjects()));
-
         Button newProjectButton = (Button)findViewById(R.id.button_new_project);
         newProjectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,5 +27,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (MyHomeApplication.getDatabase().getAllProjects().size() == 0) {
+            MyHomeApplication.getDatabase().create(new Project());
+        }
+
+        this.binding.setProjectsList(new ProjectsList(MyHomeApplication.getDatabase().getAllProjects()));
     }
 }

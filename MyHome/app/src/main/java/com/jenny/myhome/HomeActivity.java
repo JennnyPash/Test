@@ -1,8 +1,10 @@
 package com.jenny.myhome;
 
 import android.databinding.DataBindingUtil;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.view.View;
 
 import com.jenny.database.Project;
@@ -26,5 +28,17 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onRoomClick(View view) {
         RoomType roomType = (RoomType)view.getTag();
+    }
+
+    public void onProjectNameClick(View view) {
+        Prompts p = new Prompts(this, getString(R.string.project_name), binding.getProject().getName());
+        p.setOnOkListener(new Prompts.OnOkListener() {
+            @Override
+            public void onOkClick(String projectName) {
+                binding.getProject().setName(projectName);
+                MyHomeApplication.getDatabase().update(binding.getProject());
+            }
+        });
+        p.show();
     }
 }
