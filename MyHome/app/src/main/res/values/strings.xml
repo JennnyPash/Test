@@ -2,6 +2,8 @@
     <string name="app_name">Моят дом</string>
     <string name="project_name">Име на проект</string>
     <string name="rooms">стаи</string>
+    <string name="save">запази</string>
+    <string name="cancel">отказ</string>
 
     <string name="bath_room">Баня</string>
     <string name="kitchen">Кухня</string>

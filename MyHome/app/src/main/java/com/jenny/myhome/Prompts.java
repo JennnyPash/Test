@@ -36,7 +36,7 @@ public class Prompts {
 
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("OK",
+                .setPositiveButton(context.getString(R.string.save),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
                                 if (listener != null) {
@@ -44,7 +44,7 @@ public class Prompts {
                                 }
                             }
                         })
-                .setNegativeButton("Cancel",
+                .setNegativeButton(context.getString(R.string.cancel),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
                                 dialog.cancel();
