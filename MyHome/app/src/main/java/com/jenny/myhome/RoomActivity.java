@@ -3,10 +3,18 @@ package com.jenny.myhome;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import com.jenny.binding.SubjectsList;
 import com.jenny.database.Project;
 import com.jenny.database.Room;
+import com.jenny.database.Subject;
 import com.jenny.myhome.databinding.ActivityRoomBinding;
+
+import java.util.ArrayList;
 
 public class RoomActivity extends AppCompatActivity {
     private ActivityRoomBinding binding;
@@ -16,6 +24,8 @@ public class RoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_room);
+
+        initializeSubjectsSpinner();
     }
 
     @Override
@@ -28,15 +38,48 @@ public class RoomActivity extends AppCompatActivity {
         if (roomId > 0) {
             room = MyHomeApplication.getDatabase().getRoom(roomId);
         } else {
-			if (projectId > 0) {
-				Project project = MyHomeApplication.getDatabase().getProject(projectId);
-				room.setProject(project);
-			}
+            if (projectId > 0) {
+                Project project = MyHomeApplication.getDatabase().getProject(projectId);
+                room.setProject(project);
+            }
 
             RoomType roomType = (RoomType)getIntent().getSerializableExtra(Constants.ROOM_TYPE);
             room.setRoomType(roomType);
         }
 
         this.binding.setRoom(room);
+        this.binding.setSubject(new Subject());
+        this.binding.setSubjectsList(new SubjectsList(room.getSubjects()));
+    }
+
+    public void onAddSubjectClick(View v){
+        this.binding.getSubjectsList().subjects.add(this.binding.getSubject());
+        this.binding.setSubject(new Subject());
+    }
+
+    private void initializeSubjectsSpinner() {
+        ArrayList<SubjectType> arrayList = new ArrayList<>();
+        for (SubjectType subjectType : SubjectType.values()) {
+            arrayList.add(subjectType);
+        }
+
+        Spinner spinner = (Spinner)findViewById(R.id.subjects_spinner);
+
+        ArrayAdapter<SubjectType> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayList);
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (view != null) {
+                    Spinner spinner = (Spinner) view.getParent();
+                    SubjectType subjectType = (SubjectType) spinner.getSelectedItem();
+                    binding.getSubject().setSubjectType(subjectType);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
     }
 }
