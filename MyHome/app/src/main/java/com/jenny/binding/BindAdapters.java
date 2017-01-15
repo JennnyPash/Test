@@ -1,20 +1,24 @@
 package com.jenny.binding;
 
+import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.j256.ormlite.dao.ForeignCollection;
+import com.jenny.database.Project;
 import com.jenny.database.Subject;
-import com.jenny.myhome.MyHomeApplication;
+import com.jenny.myhome.Constants;
+import com.jenny.myhome.HomeActivity;
 
 /**
- * Created by kivanov on 1/14/2017.
+ * Created by JennyPash on 1/14/2017.
  */
 
 public class BindAdapters {
@@ -71,18 +75,40 @@ public class BindAdapters {
     }
 
     @BindingAdapter("app:items")
-    public static void bindList(ListView view, ObservableArrayList<Subject> list) {
-        try {
-            BaseAdapter adapter = new ArrayAdapter<>(MyHomeApplication.getContext(),
-                    android.R.layout.simple_list_item_1, list.toArray());
-            view.setAdapter(adapter);
-        } catch (Exception e) {
-            String eM = e.getMessage();
-        }
+    public static void bindProjects(ListView listView, ObservableArrayList<Project> projects) {
+        ListAdapter listAdapter = new ArrayAdapter<>(listView.getContext(), android.R.layout.simple_selectable_list_item , projects);
+        listView.setAdapter(listAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Project project = (Project)parent.getItemAtPosition(position);
+                Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                intent.putExtra(Constants.PROJECT_ID, project.getId());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
-    @InverseBindingAdapter(attribute = "app:items")
-    public static ForeignCollection<Subject> invv(View v) {
-        return null;
+    @BindingAdapter("app:items")
+    public static void bindList(ListView view, ObservableArrayList<Subject> list) {
+        ListAdapter adapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, list);
+        view.setAdapter(adapter);
+
+        view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Subject subject = (Subject)adapterView.getItemAtPosition(i);
+                Toast.makeText(view.getContext(), "SHORT", Toast.LENGTH_SHORT).show();
+            }
+        });
+        view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Subject subject = (Subject)adapterView.getItemAtPosition(i);
+                Toast.makeText(view.getContext(), "LONG", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
     }
 }

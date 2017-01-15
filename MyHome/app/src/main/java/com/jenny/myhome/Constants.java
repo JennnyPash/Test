@@ -1,7 +1,7 @@
 package com.jenny.myhome;
 
 /**
- * Created by kivanov on 1/13/2017.
+ * Created by JennyPash on 1/13/2017.
  */
 
 public class Constants {

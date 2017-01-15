@@ -11,6 +11,7 @@
     <string name="from">от</string>
     <string name="to">до</string>
     <string name="price_bought_subject">Цена на закупен продукт</string>
+    <string name="price">цена</string>
 
     <string name="bath_room">Баня</string>
     <string name="kitchen">Кухня</string>

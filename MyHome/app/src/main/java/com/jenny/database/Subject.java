@@ -1,9 +1,13 @@
 package com.jenny.database;
 
+import android.content.Context;
 import android.databinding.Bindable;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.types.StringBytesType;
 import com.jenny.myhome.BR;
+import com.jenny.myhome.MyHomeApplication;
+import com.jenny.myhome.R;
 import com.jenny.myhome.SubjectType;
 
 /**
@@ -87,5 +91,29 @@ public class Subject extends Entity {
     public void setSubjectType(SubjectType subjectType) {
         this.subjectType = subjectType;
         notifyPropertyChanged(BR.subjectType);
+    }
+
+    @Override
+    public String toString() {
+        Context context = MyHomeApplication.getContext();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(String.format("%s: ", this.subjectType));
+
+        if (this.price > 0) {
+            stringBuilder.append(String.format(" - %.2f %s",
+                    this.price, context.getString(R.string.lv)));
+        } else {
+            stringBuilder.append(String.format("%s %.2f %s %.2f %s",
+                    context.getString(R.string.from),
+                    this.minPrice,
+                    context.getString(R.string.to),
+                    this.maxPrice,
+                    context.getString(R.string.lv)));
+        }
+
+        if (this.url != null && this.url.trim().length() > 0) {
+            stringBuilder.append(String.format("\r\n%s", this.url));
+        }
+        return stringBuilder.toString();
     }
 }

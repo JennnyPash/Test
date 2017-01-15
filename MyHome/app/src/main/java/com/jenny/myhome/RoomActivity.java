@@ -53,6 +53,10 @@ public class RoomActivity extends AppCompatActivity {
     }
 
     public void onAddSubjectClick(View v){
+        Spinner spinner = (Spinner)findViewById(R.id.subjects_spinner);
+        SubjectType subjectType = (SubjectType) spinner.getSelectedItem();
+
+        this.binding.getSubject().setSubjectType(subjectType);
         this.binding.getSubjectsList().subjects.add(this.binding.getSubject());
         this.binding.setSubject(new Subject());
     }
@@ -67,19 +71,5 @@ public class RoomActivity extends AppCompatActivity {
 
         ArrayAdapter<SubjectType> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayList);
         spinner.setAdapter(arrayAdapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (view != null) {
-                    Spinner spinner = (Spinner) view.getParent();
-                    SubjectType subjectType = (SubjectType) spinner.getSelectedItem();
-                    binding.getSubject().setSubjectType(subjectType);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
     }
 }

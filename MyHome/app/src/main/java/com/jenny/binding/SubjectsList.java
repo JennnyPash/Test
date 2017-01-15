@@ -6,7 +6,7 @@ import com.j256.ormlite.dao.ForeignCollection;
 import com.jenny.database.Subject;
 
 /**
- * Created by kivanov on 1/14/2017.
+ * Created by JennyPash on 1/14/2017.
  */
 
 public class SubjectsList {
