@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View" />
         <variable name="room" type="com.jenny.database.Room" />
         <variable name="subject" type="com.jenny.database.Subject" />
         <variable name="subjectsList" type="com.jenny.binding.SubjectsList" />
@@ -183,16 +184,57 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
-                android:text="TOTAL"/>
+                android:text="@string/your_budget_is"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="@{String.valueOf(subjectsList.getTotalSubjects())}"/>
+                android:layout_marginEnd="5dp"
+                android:text=":" />
             <TextView
                 android:layout_width="wrap_content"
-                android:text="diff"/>
+                android:text="@{String.valueOf(subjectsList.budget)}"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="@{String.valueOf(subjectsList.getDiff())}"/>
+                android:text="@string/lv"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/budget_spent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text=":"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@{String.valueOf(subjectsList.sum)}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/lv" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/exceed_budget"
+                android:visibility="@{subjectsList.diff &lt; 0d ? View.VISIBLE : View.GONE}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/budget_left"
+                android:visibility="@{subjectsList.diff &gt; 0d  || subjectsList.diff == 0d? View.VISIBLE : View.GONE}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text=":"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@{String.valueOf(subjectsList.diff)}"
+                android:textColor="@{subjectsList.diff}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/lv" />
         </TableRow>
     </LinearLayout>
 </layout>

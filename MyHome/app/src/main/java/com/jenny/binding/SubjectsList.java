@@ -45,7 +45,12 @@ public class SubjectsList extends BaseObservable {
     }
 
     @Bindable
-    public double getDiff() {
+    public double getBudget() {
+        return this.room.getBudget();
+    }
+
+    @Bindable
+    public double getSum() {
         double sum = 0;
 
         for (Subject subject : this.subjects) {
@@ -72,6 +77,11 @@ public class SubjectsList extends BaseObservable {
             sum += add;
         }
 
-        return room.getBudget() - sum;
+        return sum;
+    }
+
+    @Bindable
+    public double getDiff() {
+        return room.getBudget() - this.getSum();
     }
 }

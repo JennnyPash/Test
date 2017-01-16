@@ -3,9 +3,11 @@ package com.jenny.binding;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableArrayList;
+import android.graphics.Color;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.jenny.database.Project;
 import com.jenny.database.Subject;
@@ -77,5 +79,20 @@ public class BindAdapters {
     public static void bindList(ListView view, ObservableArrayList<Subject> list) {
         ListAdapter adapter = new EntityArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1, list);
         view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("android:textColor")
+    public static void setText(TextView textView, double budgetLeft) {
+        switch (Double.compare(budgetLeft, 0)) {
+            case -1:
+                textView.setTextColor(Color.RED);
+                break;
+            case 1:
+                textView.setTextColor(Color.GREEN);
+                break;
+            default:
+                textView.setTextColor(Color.BLACK);
+                break;
+        }
     }
 }

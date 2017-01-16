@@ -16,6 +16,10 @@
     <string name="new_project">Нов проект</string>
     <string name="delete">изтрий</string>
     <string name="changes_saved">Промените са запазени</string>
+    <string name="your_budget_is">Вашият бюджет е</string>
+    <string name="budget_spent">Изразходен бюджет</string>
+    <string name="exceed_budget">Надвишавате вашия бюджет с</string>
+    <string name="budget_left">Остатък от вашия бюджет</string>
     <!-- стаи -->
     <string name="bath_room">Баня</string>
     <string name="kitchen">Кухня</string>
