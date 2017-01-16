@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import android.view.View;
 
-import com.jenny.database.Project;
 import com.jenny.myhome.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {
@@ -17,12 +16,15 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         int projectId = this.getIntent().getIntExtra(Constants.PROJECT_ID , 0);
         if (projectId > 0) {
             this.binding.setProject(MyHomeApplication.getDatabase().getProject(projectId));
-        } else {
-            this.binding.setProject(new Project());
         }
     }
 

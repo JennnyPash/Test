@@ -61,6 +61,6 @@ public class Project extends Entity {
 
     @Override
     public String toString() {
-        return String.format("%s - %d %s", this.name, this.rooms.size(), MyHomeApplication.getContext().getString(R.string.rooms));
+        return String.format("%s - %d %s", this.name, this.rooms != null ? this.rooms.size() : 0, MyHomeApplication.getContext().getString(R.string.rooms));
     }
 }

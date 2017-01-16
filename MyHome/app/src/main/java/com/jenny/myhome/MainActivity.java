@@ -25,7 +25,11 @@ public class MainActivity extends AppCompatActivity {
         newProjectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Project project = new Project();
+                MyHomeApplication.getDatabase().create(project);
+
+                Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                intent.putExtra(Constants.PROJECT_ID, project.getId());
                 startActivity(intent);
             }
         });
