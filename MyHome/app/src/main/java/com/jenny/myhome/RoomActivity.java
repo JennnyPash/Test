@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class RoomActivity extends AppCompatActivity {
     private ActivityRoomBinding binding;
-    private int projectId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +30,17 @@ public class RoomActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        this.projectId = getIntent().getIntExtra(Constants.PROJECT_ID, 0);
-
-        Room room = new Room();
         int roomId = getIntent().getIntExtra(Constants.ROOM_ID, 0);
+
         if (roomId > 0) {
-            room = MyHomeApplication.getDatabase().getRoom(roomId);
+            Room room = MyHomeApplication.getDatabase().getRoom(roomId);
+
+            this.binding.setRoom(room);
+            this.binding.setSubject(new Subject());
+            this.binding.setSubjectsList(new SubjectsList(room.getSubjects()));
         } else {
-            if (projectId > 0) {
-                Project project = MyHomeApplication.getDatabase().getProject(projectId);
-                room.setProject(project);
-            }
-
-            RoomType roomType = (RoomType)getIntent().getSerializableExtra(Constants.ROOM_TYPE);
-            room.setRoomType(roomType);
+            finish();
         }
-
-        this.binding.setRoom(room);
-        this.binding.setSubject(new Subject());
-        this.binding.setSubjectsList(new SubjectsList(room.getSubjects()));
     }
 
     public void onAddSubjectClick(View v){
@@ -57,8 +48,12 @@ public class RoomActivity extends AppCompatActivity {
         SubjectType subjectType = (SubjectType) spinner.getSelectedItem();
 
         this.binding.getSubject().setSubjectType(subjectType);
-        this.binding.getSubjectsList().subjects.add(this.binding.getSubject());
-        this.binding.setSubject(new Subject());
+        this.binding.getSubject().setRoom(this.binding.getRoom());
+
+        if (MyHomeApplication.getDatabase().create(this.binding.getSubject()) > 0) {
+            this.binding.getSubjectsList().subjects.add(this.binding.getSubject());
+            this.binding.setSubject(new Subject());
+        }
     }
 
     private void initializeSubjectsSpinner() {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.view.View;
 
+import com.jenny.database.Room;
 import com.jenny.myhome.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {
@@ -25,14 +26,22 @@ public class HomeActivity extends AppCompatActivity {
         int projectId = this.getIntent().getIntExtra(Constants.PROJECT_ID , 0);
         if (projectId > 0) {
             this.binding.setProject(MyHomeApplication.getDatabase().getProject(projectId));
+        } else {
+            finish();
         }
     }
 
     public void onRoomClick(View view) {
         RoomType roomType = (RoomType)view.getTag();
+
+        Room room = new Room();
+        room.setProject(this.binding.getProject());
+        room.setRoomType(roomType);
+
+        MyHomeApplication.getDatabase().create(room);
+
         Intent intent = new Intent(this, RoomActivity.class);
-        intent.putExtra(Constants.PROJECT_ID, this.binding.getProject().getId());
-        intent.putExtra(Constants.ROOM_TYPE, roomType);
+        intent.putExtra(Constants.ROOM_ID, room.getId());
         startActivity(intent);
     }
 
