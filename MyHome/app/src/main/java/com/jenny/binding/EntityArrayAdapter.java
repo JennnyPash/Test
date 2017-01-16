@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.jenny.database.Entity;
 import com.jenny.database.Project;
@@ -40,7 +38,7 @@ public class EntityArrayAdapter<T extends Entity> extends ArrayAdapter<Entity> {
         final Entity entity = entities.get(position);
         binding.setEntity(entity);
 
-        Button deleteButton = (Button)binding.getRoot().findViewById(R.id.delete_item);
+        View deleteButton = binding.getRoot().findViewById(R.id.delete_item);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +48,7 @@ public class EntityArrayAdapter<T extends Entity> extends ArrayAdapter<Entity> {
             }
         });
 
-        TextView itemTextView = (TextView)binding.getRoot().findViewById(R.id.item_text);
+        View itemTextView = binding.getRoot().findViewById(R.id.item_text);
         itemTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
