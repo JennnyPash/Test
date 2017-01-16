@@ -14,6 +14,7 @@
     <string name="price">цена</string>
     <string name="projects">Проекти</string>
     <string name="new_project">Нов проект</string>
+    <string name="delete">изтрий</string>
     <!-- стаи -->
     <string name="bath_room">Баня</string>
     <string name="kitchen">Кухня</string>
