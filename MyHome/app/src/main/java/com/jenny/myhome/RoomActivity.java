@@ -1,11 +1,16 @@
 package com.jenny.myhome;
 
+import android.content.Intent;
+import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.jenny.binding.SubjectsList;
@@ -25,6 +30,38 @@ public class RoomActivity extends AppCompatActivity {
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_room);
 
         initializeSubjectsSpinner();
+
+        ListView listView = (ListView)findViewById(R.id.subjects_listview);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Subject subject = (Subject)parent.getItemAtPosition(position);
+
+                if (id == R.id.item_text) {
+                    Intent intent = new Intent(view.getContext(), EditSubjectActivity.class);
+                    intent.putExtra(Constants.SUBJECT_ID, subject.getId());
+                    startActivity(intent);
+                } else if (id == R.id.delete_item) {
+                    if (MyHomeApplication.getDatabase().delete(subject) > 0) {
+                        binding.getSubjectsList().removeItem(subject);
+                    }
+                } else {
+                    finish();
+                }
+            }
+        });
+
+        EditText editText = (EditText)findViewById(R.id.budget_edittext);
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_UP) {
+                    MyHomeApplication.getDatabase().update(binding.getRoom());
+                    binding.getSubjectsList().notifyChange();
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -37,7 +74,7 @@ public class RoomActivity extends AppCompatActivity {
 
             this.binding.setRoom(room);
             this.binding.setSubject(new Subject());
-            this.binding.setSubjectsList(new SubjectsList(room.getSubjects()));
+            this.binding.setSubjectsList(new SubjectsList(room.getSubjects(), room));
         } else {
             finish();
         }
@@ -51,7 +88,7 @@ public class RoomActivity extends AppCompatActivity {
         this.binding.getSubject().setRoom(this.binding.getRoom());
 
         if (MyHomeApplication.getDatabase().create(this.binding.getSubject()) > 0) {
-            this.binding.getSubjectsList().subjects.add(this.binding.getSubject());
+            this.binding.getSubjectsList().addItem(this.binding.getSubject());
             this.binding.setSubject(new Subject());
         }
     }

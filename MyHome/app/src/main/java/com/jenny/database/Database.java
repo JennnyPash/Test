@@ -117,6 +117,10 @@ public class Database extends OrmLiteSqliteOpenHelper {
     }
 
     /* SUBJECTS */
+    public Subject getSubject(int id) {
+        return this.subjectsDao.queryForId(id);
+    }
+
     public List<Subject> getAllSubjects() {
         return this.subjectsDao.queryForAll();
     }

@@ -5,7 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.jenny.binding.ProjectsList;
 import com.jenny.database.Project;
@@ -31,6 +33,26 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 intent.putExtra(Constants.PROJECT_ID, project.getId());
                 startActivity(intent);
+            }
+        });
+
+        ListView listView = (ListView)findViewById(R.id.projects_listview);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Project project = (Project) parent.getItemAtPosition(position);
+
+                if (id == R.id.item_text) {
+                    Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                    intent.putExtra(Constants.PROJECT_ID, project.getId());
+                    startActivity(intent);
+                } else if (id == R.id.delete_item) {
+                    if (MyHomeApplication.getDatabase().delete(project) > 0) {
+                        binding.getProjectsList().getProjects().remove(project);
+                    }
+                } else {
+                    finish();
+                }
             }
         });
     }

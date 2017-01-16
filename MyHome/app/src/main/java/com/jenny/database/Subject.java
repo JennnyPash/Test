@@ -100,7 +100,7 @@ public class Subject extends Entity {
         stringBuilder.append(String.format("%s: ", this.subjectType));
 
         if (this.price > 0) {
-            stringBuilder.append(String.format(" - %.2f %s",
+            stringBuilder.append(String.format(" %.2f %s",
                     this.price, context.getString(R.string.lv)));
         } else {
             stringBuilder.append(String.format("%s %.2f %s %.2f %s",

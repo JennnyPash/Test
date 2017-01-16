@@ -12,7 +12,9 @@
     <string name="to">до</string>
     <string name="price_bought_subject">Цена на закупен продукт</string>
     <string name="price">цена</string>
-
+    <string name="projects">Проекти</string>
+    <string name="new_project">Нов проект</string>
+    <!-- стаи -->
     <string name="bath_room">Баня</string>
     <string name="kitchen">Кухня</string>
     <string name="living_room">Всекидневна</string>
@@ -20,10 +22,7 @@
     <string name="bed_room">Спалня</string>
     <string name="cabinet">Кабинет</string>
     <string name="url">url</string>
-    <string name="subjects_list">Списък с продукти</string>
-
+    <string name="subjects_list">Списък с обзавеждане</string>
+    <!-- мебели -->
     <string name="bed">Легло</string>
-
-    <string name="projects">Проекти</string>
-    <string name="new_project">Нов проект</string>
 </resources>

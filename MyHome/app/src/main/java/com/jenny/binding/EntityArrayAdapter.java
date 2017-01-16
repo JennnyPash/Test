@@ -1,21 +1,16 @@
 package com.jenny.binding;
 
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableArrayList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.jenny.database.Entity;
-import com.jenny.database.Project;
-import com.jenny.database.Subject;
-import com.jenny.myhome.Constants;
-import com.jenny.myhome.EditSubjectActivity;
-import com.jenny.myhome.HomeActivity;
-import com.jenny.myhome.MyHomeApplication;
 import com.jenny.myhome.R;
 import com.jenny.myhome.databinding.EntityListItemBinding;
 
@@ -32,7 +27,7 @@ public class EntityArrayAdapter<T extends Entity> extends ArrayAdapter<Entity> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         EntityListItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.entity_list_item, parent, false);
 
@@ -43,8 +38,10 @@ public class EntityArrayAdapter<T extends Entity> extends ArrayAdapter<Entity> {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MyHomeApplication.getDatabase().delete(entity) > 0) {
-                    entities.remove(entity);
+                ListView listView = (ListView)parent;
+                AdapterView.OnItemClickListener listener = listView.getOnItemClickListener();
+                if (listener != null) {
+                    listener.onItemClick(listView, view, position, view.getId());
                 }
             }
         });
@@ -53,19 +50,10 @@ public class EntityArrayAdapter<T extends Entity> extends ArrayAdapter<Entity> {
         itemTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = null;
-                if (entity.getClass() == Project.class) {
-                    intent = new Intent(view.getContext(), HomeActivity.class);
-                    intent.putExtra(Constants.PROJECT_ID, entity.getId());
-                }
-
-                if (entity.getClass() == Subject.class) {
-                    intent = new Intent(view.getContext(), EditSubjectActivity.class);
-                    intent.putExtra(Constants.SUBJECT_ID, entity.getId());
-                }
-
-                if (intent != null) {
-                    view.getContext().startActivity(intent);
+                ListView listView = (ListView)parent;
+                AdapterView.OnItemClickListener listener = listView.getOnItemClickListener();
+                if (listener != null) {
+                    listener.onItemClick(listView, view, position, view.getId());
                 }
             }
         });
