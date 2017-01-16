@@ -7,8 +7,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/five_dp_padding"
-        android:paddingRight="@dimen/five_dp_padding"
+        android:padding="@dimen/five_dp_padding"
         android:gravity="center">
         <TextView android:id="@+id/item_text"
             android:layout_width="0dp"

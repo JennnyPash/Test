@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".RoomActivity"></activity>
+        <activity android:name=".RoomActivity" />
+        <activity android:name=".EditSubjectActivity"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import com.jenny.database.Entity;
 import com.jenny.database.Project;
 import com.jenny.database.Subject;
 import com.jenny.myhome.Constants;
+import com.jenny.myhome.EditSubjectActivity;
 import com.jenny.myhome.HomeActivity;
 import com.jenny.myhome.MyHomeApplication;
 import com.jenny.myhome.R;
@@ -52,14 +53,19 @@ public class EntityArrayAdapter<T extends Entity> extends ArrayAdapter<Entity> {
         itemTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = null;
                 if (entity.getClass() == Project.class) {
-                    Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                    intent = new Intent(view.getContext(), HomeActivity.class);
                     intent.putExtra(Constants.PROJECT_ID, entity.getId());
-                    view.getContext().startActivity(intent);
                 }
 
                 if (entity.getClass() == Subject.class) {
-                    ///Intent intent = new Intent(view.getContext(), SubjectActivity.class);
+                    intent = new Intent(view.getContext(), EditSubjectActivity.class);
+                    intent.putExtra(Constants.SUBJECT_ID, entity.getId());
+                }
+
+                if (intent != null) {
+                    view.getContext().startActivity(intent);
                 }
             }
         });
