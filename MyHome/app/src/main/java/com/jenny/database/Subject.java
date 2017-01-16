@@ -4,7 +4,6 @@ import android.content.Context;
 import android.databinding.Bindable;
 
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.types.StringBytesType;
 import com.jenny.myhome.BR;
 import com.jenny.myhome.MyHomeApplication;
 import com.jenny.myhome.R;
