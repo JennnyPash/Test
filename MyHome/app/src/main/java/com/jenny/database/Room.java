@@ -64,4 +64,9 @@ public class Room extends Entity {
         this.roomType = roomType;
         notifyPropertyChanged(BR.roomType);
     }
+
+    @Override
+    public String toString() {
+        return this.roomType.toString();
+    }
 }

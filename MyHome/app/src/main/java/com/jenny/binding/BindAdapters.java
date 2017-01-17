@@ -5,12 +5,19 @@ import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.graphics.Color;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jenny.database.Project;
+import com.jenny.database.Room;
 import com.jenny.database.Subject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by JennyPash on 1/14/2017.
@@ -79,6 +86,22 @@ public class BindAdapters {
     public static void bindList(ListView view, ObservableArrayList<Subject> list) {
         ListAdapter adapter = new EntityArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1, list);
         view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("app:items")
+    public static void bindExpandableList(ExpandableListView expandableListView, List<RoomSummary> roomSumarries) {
+        List<Room> listDataHeaders = new ArrayList<>();
+        HashMap<Room, List<Subject>> listDataChild = new HashMap<>();
+
+        for (RoomSummary roomSummary :
+                roomSumarries) {
+            listDataHeaders.add(roomSummary.getRoom());
+            listDataChild.put(roomSummary.getRoom(), roomSummary.getSubjects());
+        }
+
+        ExpandableListAdapter adapter = new RoomSummaryAdapter(expandableListView.getContext(), listDataHeaders, listDataChild);
+        expandableListView.setAdapter(adapter);
+
     }
 
     @BindingAdapter("android:textColor")

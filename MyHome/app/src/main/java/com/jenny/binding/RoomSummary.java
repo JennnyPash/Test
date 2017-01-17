@@ -84,4 +84,8 @@ public class RoomSummary extends BaseObservable {
     public double getDiff() {
         return room.getBudget() - this.getSum();
     }
+
+    public Room getRoom() {
+        return room;
+    }
 }

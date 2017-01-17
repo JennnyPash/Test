@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="project" type="com.jenny.database.Project" />
+        <variable name="homeSummary" type="com.jenny.binding.HomeSummary" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,16 +14,18 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.jenny.myhome.HomeSummaryActivity">
+        tools:context="com.jenny.myhome.HomeSummaryActivity"
+        android:background="#f4f4f4">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="@{project.name}" />
+            android:text="@{homeSummary.project.name}" />
         <ExpandableListView android:id="@+id/rooms_list_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:items="@{homeSummary.roomSumarries}"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
