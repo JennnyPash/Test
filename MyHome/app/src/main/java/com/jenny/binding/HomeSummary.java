@@ -8,7 +8,7 @@ import com.jenny.database.Project;
 import java.util.List;
 
 /**
- * Created by kivanov on 1/17/2017.
+ * Created by JennyPash on 1/17/2017.
  */
 
 public class HomeSummary extends BaseObservable{

@@ -3,20 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ScrollView
+    <LinearLayout android:id="@+id/subjects_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:overScrollMode="always">
-        <ListView
-            android:id="@+id/lblListItem"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textSize="17dip"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
-    </ScrollView>
+        android:orientation="vertical"
+        android:paddingLeft="?android:expandableListPreferredItemPaddingLeft">
+    </LinearLayout>
+    <LinearLayout android:id="@+id/summary_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/summary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/five_dp"
+            android:text=":"/>
+        <TextView android:id="@+id/summary_diff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

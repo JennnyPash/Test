@@ -2,29 +2,29 @@ package com.jenny.binding;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jenny.database.Room;
 import com.jenny.database.Subject;
+import com.jenny.myhome.MyHomeApplication;
 import com.jenny.myhome.R;
 
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by kivanov on 1/17/2017.
+ * Created by JennyPash on 1/17/2017.
  */
 
 public class RoomSummaryAdapter extends BaseExpandableListAdapter {
     private Context context;
-    private List<Room> listDataHeader; // header titles
-    // child data in format of header title, child title
+    private List<Room> listDataHeader;
     private HashMap<Room, RoomSummary> listDataChild;
 
     public RoomSummaryAdapter(Context context, List<Room> listDataHeader, HashMap<Room, RoomSummary> listDataChild) {
@@ -87,7 +87,7 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final RoomSummary subject = (RoomSummary) getChild(groupPosition, childPosition);
+        final RoomSummary roomSummary = (RoomSummary) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
@@ -95,10 +95,36 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.room_list_item, null);
         }
 
-        ListView lvListChild = (ListView) convertView
-                .findViewById(R.id.lblListItem);
+        LinearLayout linearLayout = (LinearLayout)convertView.findViewById(R.id.subjects_linear_layout);
+        linearLayout.removeAllViews();
 
-        lvListChild.setAdapter(new ArrayAdapter<>(parent.getContext(), android.R.layout.simple_list_item_1, subject.getSubjects()));
+        //if there are added subjects add textview for each one
+        //else show empty message
+        if (roomSummary.getTotalSubjects() > 0) {
+            for (Subject subject : roomSummary.getSubjects()) {
+                TextView tv = new TextView(linearLayout.getContext());
+                tv.setText(subject.toString());
+
+                linearLayout.addView(tv);
+            }
+        } else {
+            TextView tv = new TextView(linearLayout.getContext());
+            tv.setText(MyHomeApplication.getContext().getString(R.string.no_subjects_added));
+            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+
+            linearLayout.addView(tv);
+        }
+
+        //show budget info according to budget balance
+        TextView textTextView = (TextView)convertView.findViewById(R.id.summary_text);
+        String text = roomSummary.getDiff() >= 0d ? MyHomeApplication.getContext().getString(R.string.budget_left)
+                : MyHomeApplication.getContext().getString(R.string.exceed_budget);
+        textTextView.setText(text);
+
+        //set budget balance
+        TextView diffTextView = (TextView)convertView.findViewById(R.id.summary_diff);
+        diffTextView.setText(String.format("%.2f", roomSummary.getDiff()));
+
         return convertView;
     }
 
