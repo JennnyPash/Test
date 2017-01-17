@@ -91,12 +91,12 @@ public class BindAdapters {
     @BindingAdapter("app:items")
     public static void bindExpandableList(ExpandableListView expandableListView, List<RoomSummary> roomSumarries) {
         List<Room> listDataHeaders = new ArrayList<>();
-        HashMap<Room, List<Subject>> listDataChild = new HashMap<>();
+        HashMap<Room, RoomSummary> listDataChild = new HashMap<>();
 
         for (RoomSummary roomSummary :
                 roomSumarries) {
             listDataHeaders.add(roomSummary.getRoom());
-            listDataChild.put(roomSummary.getRoom(), roomSummary.getSubjects());
+            listDataChild.put(roomSummary.getRoom(), roomSummary);
         }
 
         ExpandableListAdapter adapter = new RoomSummaryAdapter(expandableListView.getContext(), listDataHeaders, listDataChild);

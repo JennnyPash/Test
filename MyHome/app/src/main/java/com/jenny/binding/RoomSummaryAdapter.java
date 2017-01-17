@@ -5,7 +5,9 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jenny.database.Room;
@@ -23,9 +25,9 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<Room> listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<Room, List<Subject>> listDataChild;
+    private HashMap<Room, RoomSummary> listDataChild;
 
-    public RoomSummaryAdapter(Context context, List<Room> listDataHeader, HashMap<Room, List<Subject>> listDataChild) {
+    public RoomSummaryAdapter(Context context, List<Room> listDataHeader, HashMap<Room, RoomSummary> listDataChild) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listDataChild;
@@ -38,7 +40,7 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).size();
+        return 1;
     }
 
     @Override
@@ -48,8 +50,7 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this.listDataChild.get(this.listDataHeader.get(groupPosition))
-                .get(childPosition);
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition));
     }
 
     @Override
@@ -86,7 +87,7 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final Subject subject = (Subject) getChild(groupPosition, childPosition);
+        final RoomSummary subject = (RoomSummary) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
@@ -94,10 +95,10 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.room_list_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView
+        ListView lvListChild = (ListView) convertView
                 .findViewById(R.id.lblListItem);
 
-        txtListChild.setText(subject.toString());
+        lvListChild.setAdapter(new ArrayAdapter<>(parent.getContext(), android.R.layout.simple_list_item_1, subject.getSubjects()));
         return convertView;
     }
 
