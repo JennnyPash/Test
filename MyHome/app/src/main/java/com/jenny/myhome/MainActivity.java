@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 Project project = (Project) parent.getItemAtPosition(position);
 
                 if (id == R.id.item_text) {
-                    Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                    Intent intent = new Intent(view.getContext(), HomeSummaryActivity.class);
                     intent.putExtra(Constants.PROJECT_ID, project.getId());
                     startActivity(intent);
                 } else if (id == R.id.delete_item) {

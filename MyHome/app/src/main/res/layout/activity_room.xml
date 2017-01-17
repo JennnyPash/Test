@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable name="room" type="com.jenny.database.Room" />
         <variable name="subject" type="com.jenny.database.Subject" />
-        <variable name="subjectsList" type="com.jenny.binding.SubjectsList" />
+        <variable name="roomSummary" type="com.jenny.binding.RoomSummary" />
     </data>
     <LinearLayout
         android:id="@+id/activity_room"
@@ -179,7 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            app:items="@{subjectsList.subjects}" />
+            app:items="@{roomSummary.subjects}" />
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -192,7 +192,7 @@
                 android:text=":" />
             <TextView
                 android:layout_width="wrap_content"
-                android:text="@{String.valueOf(subjectsList.budget)}"/>
+                android:text="@{String.valueOf(roomSummary.budget)}"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/lv"/>
@@ -209,7 +209,7 @@
                 android:text=":"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="@{String.valueOf(subjectsList.sum)}"/>
+                android:text="@{String.valueOf(roomSummary.sum)}"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/lv" />
@@ -220,19 +220,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/exceed_budget"
-                android:visibility="@{subjectsList.diff &lt; 0d ? View.VISIBLE : View.GONE}"/>
+                android:visibility="@{roomSummary.diff &lt; 0d ? View.VISIBLE : View.GONE}"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/budget_left"
-                android:visibility="@{subjectsList.diff &gt; 0d  || subjectsList.diff == 0d? View.VISIBLE : View.GONE}"/>
+                android:visibility="@{roomSummary.diff &gt; 0d  || roomSummary.diff == 0d? View.VISIBLE : View.GONE}"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_marginEnd="@dimen/five_dp"
                 android:text=":"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="@{String.valueOf(subjectsList.diff)}"
-                android:textColor="@{subjectsList.diff}"/>
+                android:text="@{String.valueOf(roomSummary.diff)}"
+                android:textColor="@{roomSummary.diff}"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/lv" />

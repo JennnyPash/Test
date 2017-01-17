@@ -12,11 +12,11 @@ import com.jenny.database.Subject;
  * Created by JennyPash on 1/14/2017.
  */
 
-public class SubjectsList extends BaseObservable {
+public class RoomSummary extends BaseObservable {
     private ObservableArrayList<Subject> subjects;
     private Room room;
 
-    public SubjectsList(ForeignCollection<Subject> subjects, Room room) {
+    public RoomSummary(ForeignCollection<Subject> subjects, Room room) {
         this.subjects = new ObservableArrayList<>();
         if (subjects != null) {
             this.subjects.addAll(subjects);

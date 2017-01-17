@@ -1,7 +1,6 @@
 package com.jenny.myhome;
 
 import android.content.Intent;
-import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.jenny.binding.SubjectsList;
-import com.jenny.database.Project;
+import com.jenny.binding.RoomSummary;
 import com.jenny.database.Room;
 import com.jenny.database.Subject;
 import com.jenny.myhome.databinding.ActivityRoomBinding;
@@ -43,7 +41,7 @@ public class RoomActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else if (id == R.id.delete_item) {
                     if (MyHomeApplication.getDatabase().delete(subject) > 0) {
-                        binding.getSubjectsList().removeItem(subject);
+                        binding.getRoomSummary().removeItem(subject);
                     }
                 } else {
                     finish();
@@ -57,7 +55,7 @@ public class RoomActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if(event.getAction() == KeyEvent.ACTION_UP) {
                     MyHomeApplication.getDatabase().update(binding.getRoom());
-                    binding.getSubjectsList().notifyChange();
+                    binding.getRoomSummary().notifyChange();
                 }
                 return false;
             }
@@ -74,7 +72,7 @@ public class RoomActivity extends AppCompatActivity {
 
             this.binding.setRoom(room);
             this.binding.setSubject(new Subject());
-            this.binding.setSubjectsList(new SubjectsList(room.getSubjects(), room));
+            this.binding.setRoomSummary(new RoomSummary(room.getSubjects(), room));
         } else {
             finish();
         }
@@ -88,7 +86,7 @@ public class RoomActivity extends AppCompatActivity {
         this.binding.getSubject().setRoom(this.binding.getRoom());
 
         if (MyHomeApplication.getDatabase().create(this.binding.getSubject()) > 0) {
-            this.binding.getSubjectsList().addItem(this.binding.getSubject());
+            this.binding.getRoomSummary().addItem(this.binding.getSubject());
             this.binding.setSubject(new Subject());
         }
     }
