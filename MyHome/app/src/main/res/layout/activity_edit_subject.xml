@@ -104,12 +104,12 @@
             <ImageButton android:id="@+id/cancel_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_block_black_24dp"
+                android:src="@drawable/ic_block_red_24dp"
                 android:contentDescription="@string/cancel"/>
             <ImageButton android:id="@+id/save_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_save_black_24dp"
+                android:src="@drawable/ic_save_dark_blue_24dp"
                 android:contentDescription="@string/save" />
         </LinearLayout>
     </LinearLayout>

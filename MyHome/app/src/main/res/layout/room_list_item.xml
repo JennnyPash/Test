@@ -13,7 +13,9 @@
     <LinearLayout android:id="@+id/summary_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/two_dp"
+        android:paddingBottom="@dimen/two_dp">
         <TextView android:id="@+id/summary_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

@@ -6,7 +6,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -69,7 +71,7 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+    public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         Room room = (Room) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
@@ -77,17 +79,44 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.room_list_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView
-                .findViewById(R.id.lblListHeader);
+        TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(room.toString());
+
+        final ExpandableListView listView = ((ExpandableListView)parent);
+
+        lblListHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listView.isGroupExpanded(groupPosition)) {
+                    listView.collapseGroup(groupPosition);
+                } else {
+                    listView.expandGroup(groupPosition, true);
+                }
+            }
+        });
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdapterView.OnItemClickListener onItemClickListener = listView.getOnItemClickListener();
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(listView, v, groupPosition, v.getId());
+                }
+            }
+        };
+
+        View editButton = convertView.findViewById(R.id.edit_room_button);
+        editButton.setOnClickListener(onClickListener);
+        View deleteButton = convertView.findViewById(R.id.delete_room_button);
+        deleteButton.setOnClickListener(onClickListener);
 
         return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final RoomSummary roomSummary = (RoomSummary) getChild(groupPosition, childPosition);
+        RoomSummary roomSummary = (RoomSummary) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context

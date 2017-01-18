@@ -157,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="onAddSubjectClick"
-            android:src="@drawable/ic_add_circle_outline_black_24dp"
+            android:src="@drawable/ic_add_circle_outline_green_24dp"
             android:text="+"/>
         <LinearLayout
             android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package com.jenny.binding;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.ObservableArrayList;
 
 import com.jenny.database.Project;
 
@@ -13,11 +14,14 @@ import java.util.List;
 
 public class HomeSummary extends BaseObservable{
     private Project project;
-    private List<RoomSummary> roomSumarries;
+    private ObservableArrayList<RoomSummary> roomSumarries;
 
     public HomeSummary(Project project, List<RoomSummary> roomSumarries) {
         this.project = project;
-        this.roomSumarries = roomSumarries;
+        this.roomSumarries = new ObservableArrayList<>();
+        if (roomSumarries != null) {
+            this.roomSumarries.addAll(roomSumarries);
+        }
     }
 
     @Bindable
@@ -28,5 +32,10 @@ public class HomeSummary extends BaseObservable{
     @Bindable
     public List<RoomSummary> getRoomSumarries() {
         return roomSumarries;
+    }
+
+    public void removeHomeSummary(RoomSummary roomSummary) {
+        this.roomSumarries.remove(roomSummary);
+        notifyChange();
     }
 }

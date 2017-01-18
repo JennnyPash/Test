@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 
 import com.jenny.binding.HomeSummary;
 import com.jenny.binding.RoomSummary;
@@ -22,6 +24,35 @@ public class HomeSummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_home_summary);
+
+        ExpandableListView expandableListView = (ExpandableListView) findViewById(R.id.rooms_list_view);
+        expandableListView.setOnItemClickListener(new ExpandableListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Room room = (Room)parent.getItemAtPosition(position);
+                if (id == R.id.edit_room_button) {
+                    Intent intent = new Intent(view.getContext(), RoomActivity.class);
+                    intent.putExtra(Constants.ROOM_ID, room.getId());
+                    startActivity(intent);
+                } else if (id == R.id.delete_room_button) {
+                    RoomSummary rm = null;
+                    for (RoomSummary roomSummary :
+                            binding.getHomeSummary().getRoomSumarries()) {
+                        if (roomSummary.getRoom().getId() == room.getId()) {
+                            rm = roomSummary;
+                        }
+                    }
+
+                    if (rm != null) {
+                        if(MyHomeApplication.getDatabase().delete(room) > 0) {
+                            binding.getHomeSummary().removeHomeSummary(rm);
+                        }
+                    }
+                } else {
+                    finish();
+                }
+            }
+        });
     }
 
     @Override
