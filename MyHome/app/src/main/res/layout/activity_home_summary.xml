@@ -30,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onProjectNameClick"
-                android:src="@drawable/ic_create_orange_24dp"/>
+                android:src="@drawable/ic_create_orange_24dp"
+                android:background="@color/transparent"/>
         </LinearLayout>
         <ExpandableListView android:id="@+id/rooms_list_view"
             android:layout_width="match_parent"
