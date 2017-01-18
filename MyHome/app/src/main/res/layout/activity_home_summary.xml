@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="@{homeSummary.project.name}" />
+            android:text="@{homeSummary.project.name}"
+            android:onClick="onProjectNameClick"/>
         <ExpandableListView android:id="@+id/rooms_list_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"

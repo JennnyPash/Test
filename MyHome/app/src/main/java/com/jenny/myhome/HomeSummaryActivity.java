@@ -80,4 +80,16 @@ public class HomeSummaryActivity extends AppCompatActivity {
         intent.putExtra(Constants.PROJECT_ID, this.binding.getHomeSummary().getProject().getId());
         startActivity(intent);
     }
+
+    public void onProjectNameClick(View view) {
+        Prompts p = new Prompts(this, getString(R.string.project_name), binding.getHomeSummary().getProject().getName());
+        p.setOnOkListener(new Prompts.OnOkListener() {
+            @Override
+            public void onOkClick(String projectName) {
+                binding.getHomeSummary().getProject().setName(projectName);
+                MyHomeApplication.getDatabase().update(binding.getHomeSummary().getProject());
+            }
+        });
+        p.show();
+    }
 }

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.jenny.binding.HomeSummary;
 import com.jenny.binding.ProjectsList;
 import com.jenny.database.Project;
 import com.jenny.myhome.databinding.ActivityMainBinding;
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 Project project = (Project) parent.getItemAtPosition(position);
 
                 if (id == R.id.item_text) {
-                    Intent intent = new Intent(view.getContext(), HomeSummaryActivity.class);
+                    Intent intent = project.getRooms().size() > 0 ? new Intent(view.getContext(), HomeSummaryActivity.class)
+                            : new Intent(view.getContext(), HomeActivity.class);
                     intent.putExtra(Constants.PROJECT_ID, project.getId());
                     startActivity(intent);
                 } else if (id == R.id.delete_item) {
