@@ -18,6 +18,7 @@ import com.jenny.database.Subject;
 import com.jenny.myhome.databinding.ActivityRoomBinding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class RoomActivity extends AppCompatActivity {
     private ActivityRoomBinding binding;
@@ -100,6 +101,18 @@ public class RoomActivity extends AppCompatActivity {
         Spinner spinner = (Spinner)findViewById(R.id.subjects_spinner);
 
         ArrayAdapter<SubjectType> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.sort(new Comparator<SubjectType>() {
+            @Override
+            public int compare(SubjectType o1, SubjectType o2) {
+                if (o1.toString().charAt(0) > o2.toString().charAt(0)) {
+                    return 1;
+                } else if (o1.toString().charAt(0) < o2.toString().charAt(0)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
         spinner.setAdapter(arrayAdapter);
     }
 }

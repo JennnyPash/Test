@@ -31,6 +31,14 @@
     <string name="cabinet">Кабинет</string>
     <string name="url">url</string>
     <string name="subjects_list">Списък с обзавеждане</string>
-    <!-- мебели -->
+    <!-- обзавеждане -->
     <string name="bed">Легло</string>
+    <string name="wardrobe">Гардероб</string>
+    <string name="commode">Шкаф/Скрин</string>
+    <string name="hanger">Закачалка</string>
+    <string name="table">Маса</string>
+    <string name="chair">Стол</string>
+    <string name="sofa">Диван</string>
+    <string name="desk">Бюро</string>
+    <string name="unit">Секция</string>
 </resources>
