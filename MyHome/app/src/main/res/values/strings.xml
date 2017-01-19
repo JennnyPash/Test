@@ -41,4 +41,16 @@
     <string name="sofa">Диван</string>
     <string name="desk">Бюро</string>
     <string name="unit">Секция</string>
+    <string name="fridge">Хладилник</string>
+    <string name="oven">Печка</string>
+    <string name="dishwasher">Съдомиялна</string>
+    <string name="absorber">Абсорбатор/Аспиратор</string>
+    <string name="drying_machine">Сушилня</string>
+    <string name="tv">Телевизор</string>
+    <string name="climatic">Климатик</string>
+    <string name="couch">Канапе</string>
+    <string name="carpet">Килим</string>
+    <string name="parquet">Паркет</string>
+    <string name="tiles">Плочки</string>
+    <string name="portmanteau">Портманто</string>
 </resources>
