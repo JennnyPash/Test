@@ -25,8 +25,13 @@ public enum SubjectType {
     CARPET(R.string.carpet),
     PARQUET(R.string.parquet),
     TILES(R.string.tiles),
-    PORTMANTEAU(R.string.portmanteau);
-
+    PORTMANTEAU(R.string.portmanteau),
+    SHOWER(R.string.shower),
+    BATHTUB(R.string.bathtub),
+    SHOWER_CABIN(R.string.shower_cabin),
+    SINK(R.string.sink),
+    TOILET_SEAT(R.string.toilet_seat),
+    MIRROR(R.string.mirror);
 
     private int resourceId;
 

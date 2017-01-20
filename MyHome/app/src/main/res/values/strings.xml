@@ -53,4 +53,11 @@
     <string name="parquet">Паркет</string>
     <string name="tiles">Плочки</string>
     <string name="portmanteau">Портманто</string>
+
+    <string name="shower">Душ</string>
+    <string name="bathtub">Вана</string>
+    <string name="shower_cabin">Душ кабина</string>
+    <string name="sink">Мивка</string>
+    <string name="toilet_seat">Тоалетна чиния</string>
+    <string name="mirror">Огледало</string>
 </resources>
