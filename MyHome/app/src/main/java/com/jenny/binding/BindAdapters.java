@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.jenny.database.Project;
 import com.jenny.database.Room;
 import com.jenny.database.Subject;
+import com.jenny.myhome.MyHomeApplication;
+import com.jenny.myhome.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -106,16 +108,19 @@ public class BindAdapters {
 
     @BindingAdapter("android:textColor")
     public static void setText(TextView textView, double budgetLeft) {
+        int color;
         switch (Double.compare(budgetLeft, 0)) {
             case -1:
-                textView.setTextColor(Color.RED);
+                color = MyHomeApplication.getContext().getResources().getColor(R.color.red);
                 break;
             case 1:
-                textView.setTextColor(Color.GREEN);
+                color = MyHomeApplication.getContext().getResources().getColor(R.color.green);
                 break;
             default:
-                textView.setTextColor(Color.BLACK);
+                TextView tv = new TextView(textView.getContext());
+                color =  tv.getCurrentTextColor();
                 break;
         }
+        textView.setTextColor(color);
     }
 }
