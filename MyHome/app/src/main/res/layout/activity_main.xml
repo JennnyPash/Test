@@ -23,15 +23,17 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/projects"
             android:textSize="32sp" />
-        <ListView android:id="@+id/projects_listview"
+        <ListView android:id="@+id/projects_list_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             app:items="@{projectsList.projects}" />
-        <Button android:id="@+id/button_new_project"
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/new_project"/>
+            android:src="@mipmap/new_project"
+            android:contentDescription="@string/new_project"
+            android:onClick="onNewProjectClick"/>
     </LinearLayout>
 </layout>

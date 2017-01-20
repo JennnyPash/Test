@@ -24,20 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        Button newProjectButton = (Button)findViewById(R.id.button_new_project);
-        newProjectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Project project = new Project();
-                MyHomeApplication.getDatabase().create(project);
-
-                Intent intent = new Intent(view.getContext(), HomeActivity.class);
-                intent.putExtra(Constants.PROJECT_ID, project.getId());
-                startActivity(intent);
-            }
-        });
-
-        ListView listView = (ListView)findViewById(R.id.projects_listview);
+        ListView listView = (ListView)findViewById(R.id.projects_list_view);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -71,5 +58,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         this.binding.setProjectsList(new ProjectsList(projects));
+    }
+
+    public void onNewProjectClick(View view) {
+        Project project = new Project();
+        MyHomeApplication.getDatabase().create(project);
+
+        Intent intent = new Intent(view.getContext(), HomeActivity.class);
+        intent.putExtra(Constants.PROJECT_ID, project.getId());
+        startActivity(intent);
     }
 }
