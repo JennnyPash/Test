@@ -2,6 +2,7 @@ package com.jenny.binding;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.util.Linkify;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -133,6 +134,7 @@ public class RoomSummaryAdapter extends BaseExpandableListAdapter {
             for (Subject subject : roomSummary.getSubjects()) {
                 TextView tv = new TextView(linearLayout.getContext());
                 tv.setText(subject.toString());
+                Linkify.addLinks(tv, Linkify.WEB_URLS);
 
                 linearLayout.addView(tv);
             }
