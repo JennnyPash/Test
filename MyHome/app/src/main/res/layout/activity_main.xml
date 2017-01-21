@@ -16,6 +16,7 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:orientation="vertical"
+        android:background="@color/activityBackground"
         tools:context="com.jenny.myhome.MainActivity">
         <TextView
             android:layout_width="wrap_content"
@@ -28,10 +29,17 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             app:items="@{projectsList.projects}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="@string/new_project"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@color/transparent"
             android:src="@mipmap/new_project"
             android:contentDescription="@string/new_project"
             android:onClick="onNewProjectClick"/>

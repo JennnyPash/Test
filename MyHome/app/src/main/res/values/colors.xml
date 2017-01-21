@@ -8,4 +8,5 @@
     <color name="green">#FF009900</color>
     <color name="orange">#FFFF8000</color>
     <color name="darkBlue">#FF000066</color>
+    <color name="activityBackground">#FFFFEC</color>
 </resources>
