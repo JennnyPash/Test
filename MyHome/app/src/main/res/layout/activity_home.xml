@@ -40,7 +40,7 @@
         <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/apartment">
+            android:background="@drawable/apartment_new">
             <TableRow android:layout_weight="5">
                 <Button
                     android:layout_height="match_parent"
